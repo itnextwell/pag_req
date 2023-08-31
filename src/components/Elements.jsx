@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Elements = () => {
+const Elements = ({createNew}) => {
 
     //El primer elemento es el estado y el segundo es el que cambia el estado
   //first guarda el valor de una variable 
@@ -22,6 +22,7 @@ const Elements = () => {
     const handleChange=(e)=>{
       //se guarda en un estado
       setSetselectValue(e.target.value)
+      createNew()
     }
 
     const handleSumit=(e)=>{
