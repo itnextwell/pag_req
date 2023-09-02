@@ -6,7 +6,11 @@ import Elements from './components/Elements'
 import useFetch from './hooks/useFetch'
 
 function App() {
-  const [ elements,getAllElement,createNew, deleteElemById]=useFetch()
+
+  const [updateInfo, setUpdateInfo] = useState()
+
+  const url='http://localhost:8080/api/v1'
+  const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
   const [isShow, setIsShow] = useState(false)
   
   const handleClick=()=>{
@@ -18,22 +22,6 @@ function App() {
     getAllElement()
 
   },[])
-
-  const handleCreateEle =()=>{
-    const data={
-      description:'valvula',
-      amount:4,
-      justification:'taller',
-      resposible:'luis',
-      supplier:'na',
-      priority:2
-    }
-    createNew(data)
-  }
-
-
-  
-
 
 
   return (
@@ -49,16 +37,30 @@ function App() {
         <button onClick={handleClick}>Elementos   </button>
         {
           isShow 
-          ?<Elements createNew={createNew}/>
+          ?<Elements createNew={createNew}
+          updateInfo={updateInfo}
+          updateElment={updateElment}
+          />
           :  <h3>Solicitud</h3>
-        }
-
-        
+        }        
         
         <div>
-          <Lists/>
+          {
+            elements?.map(element=>(
+              <Lists
+              element={element}
+              key={element.id}
+              deleteElemById={deleteElemById}
+              
+              setUpdateInfo={setUpdateInfo}
+              />
+            ))          
+
+          }         
 
         </div>
+
+        
         
       </section>
     </div>

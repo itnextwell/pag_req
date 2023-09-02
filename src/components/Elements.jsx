@@ -1,80 +1,69 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
-const Elements = ({createNew}) => {
 
-    //El primer elemento es el estado y el segundo es el que cambia el estado
-  //first guarda el valor de una variable 
-  //setfirst cambia el valor 
-  const [first, setfirst] = useState(0)
-  const [setselectValue, setSetselectValue] = useState('Prioridad 1')
+const Elements = ({ createNew,updateInfo,updateElment }) => {
+  const {register, handleSubmit, reset }=useForm()
+
+ useEffect(()=>{
+  reset(updateInfo)
+ },[updateInfo])
+
+
+
+const submit=data=>{
+  if(updateInfo){
+    //si tiene información update
+    updateElment(updateInfo.id,data)
+
+  }else{
+    //create
+    createNew(data)
+  }
   
-  console.log(first)
-
-    //solo se ejecuta cuando envíe el formulario
-
-    const handleClick=()=>{
-
-        setfirst(1)
-
-    }
-    //toma los valores cuando se cambia de opción 
-    //se pone un parametro e osea evento y se pone su parametro
-    const handleChange=(e)=>{
-      //se guarda en un estado
-      setSetselectValue(e.target.value)
-      createNew()
-    }
-
-    const handleSumit=(e)=>{
-      //para no recargar 
-      e.preventDefault()
-      //solo lo visualizo con un estado lo guardo
-      console.log(e.target.inputValue.value)
-      e.target.inputValue.value=''
-    }
-
+  reset({
+    description:'',
+    amount:'',
+    justification:'',
+    responsible:'',
+    supplier:'',
+    priority:''
+  })
+}
 
 
   return (
-    <section>
-      <p>Descripción</p>
-      <input type="text" id="inputValue" placeholder='Ingrese Descripción' />
-        
-        <p>Justificación</p>
-        <input type="text" id="inputValue" placeholder='Ingrese Justificación' />
-        <p>Responsable</p>
-         <input type="text"  placeholder='Ingrese Responsable' />
-        
-        <div>
-        <p>Seleccione la prioridad</p>
 
-        <select onChange={handleChange}>
-          <option value="Prioridad 1">Prioridad 1</option>
-          <option value="Prioridad 2">Prioridad 2</option>
-          <option value="Prioridad 3">Prioridad 3</option>
+      <form onSubmit={handleSubmit(submit)}>
 
-
-        </select>
-            
-        </div>
-
-        <div>
-          <p>Imagen</p>
-        </div>
-      <form onSubmit={handleSumit}>
-
+      <div>
+        <label htmlFor="description">Descripción</label>
+        <input {...register('description')} id="description" type="text" />
+      </div>
+      <div>
+        <label htmlFor="amount">Cantidad</label>
+        <input {...register('amount')} id="amount" type="number" />
+      </div>
+      <div>
+        <label htmlFor="justification">Justificación</label>
+        <input {...register('justification')} id="justification" type="text" />
+      </div>
+      <div>
+        <label htmlFor="responsible">Responsable</label>
+        <input {...register('responsible')} id="responsible" type="text" />
+      </div>
+      <div>
+        <label htmlFor="supplier">Proveedor</label>
+        <input {...register('supplier')} id="supplier" type="text" />
+      </div>
+      <div>
+        <label htmlFor="priotiry">Prioridad</label>
+        <input {...register('priority')} id="priotiry" type="text" />
+      </div>
+      <button>Enviar </button>
       
 
-        <p>Proveedor</p>
-
-         <input type="text"  id='inputValue' placeholder='Ingrese Proveedor' />
-
-
-        <button onClick={handleClick}>Enviar</button>
-
-      </form>
-        
-    </section>
+    </form>
   )
 }
 
