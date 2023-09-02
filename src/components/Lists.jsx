@@ -4,7 +4,7 @@
 const Lists = ({element, deleteElemById,setUpdateInfo}) => {
 
     const handleDelete=()=>{
-        deleteElemById(element.id)
+        deleteElemById('/elementos',element.id)
         
 
     }

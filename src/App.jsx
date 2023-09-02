@@ -19,7 +19,7 @@ function App() {
 
   useEffect(()=>{
 
-    getAllElement()
+    getAllElement('/elementos')
 
   },[])
 

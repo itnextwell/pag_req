@@ -11,14 +11,14 @@ const Elements = ({ createNew,updateInfo,updateElment }) => {
 
 
 
-const submit=data=>{
+const submit=(data)=>{
   if(updateInfo){
     //si tiene información update
-    updateElment(updateInfo.id,data)
+    updateElment('/elementos',updateInfo.id,data)
 
   }else{
     //create
-    createNew(data)
+    createNew('/elementos',data)
   }
   
   reset({

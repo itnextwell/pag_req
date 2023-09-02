@@ -8,8 +8,8 @@ const useFetch = (url) => {
 
   //Read
 
-  const getAllElement=()=>{
-    axios.get(`${url}/elementos`)
+  const getAllElement=(path)=>{
+    axios.get(`${url}${path}`)
 
     .then(res=>setElement(res.data))
 
@@ -18,8 +18,8 @@ const useFetch = (url) => {
   }
   //Create
 
-  const createNew=(data)=>{
-    axios.post(`${url}/elementos`,data)
+  const createNew=(path,data)=>{
+    axios.post(`${url}${path}`,data)
     .then(res=>{
     setElement([...element,res.data])
     console.log(res.data)
@@ -29,8 +29,8 @@ const useFetch = (url) => {
 
   //Delete
 
-  const deleteElement=(id)=>{
-    axios.delete(`${url}/elementos/${id}`)
+  const deleteElement=(path,id)=>{
+    axios.delete(`${url}${path}/${id}`)
     .then(res=>{
         console.log(res.data)
         const filterElement=element.filter(elem=>elem.id!==id)
@@ -39,9 +39,9 @@ const useFetch = (url) => {
     .catch(err=>console.log(err))
   }
   
-  //update
-  const updateElement=(id,data)=>{
-    axios.put(`${url}/elementos/${id}`,data)
+  //update el orden si importa de los compoenetes 
+  const updateElement=(path,id,data)=>{
+    axios.put(`${url}${path}/${id}`,data)
     .then(res=>{
         console.log(res.data)
         const infoUpdate=element.map(elem=>{
