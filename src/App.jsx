@@ -4,35 +4,49 @@ import './App.css'
 import Lists from './components/Lists'
 import Elements from './components/Elements'
 import useFetch from './hooks/useFetch'
+import { Route, Routes } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Home from './pages/Home'
+import NavBar from './components/shared/NavBar'
+
+
 
 function App() {
 
-  const [updateInfo, setUpdateInfo] = useState()
+  // const [updateInfo, setUpdateInfo] = useState()
 
-  const url='http://localhost:8080/api/v1'
-  const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
-  const [isShow, setIsShow] = useState(false)
+  // const url='http://localhost:8080/api/v1'
+  // const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
+  // const [isShow, setIsShow] = useState(false)
   
-  const handleClick=()=>{
-    setIsShow(!isShow)
-  }
+  // const handleClick=()=>{
+  //   setIsShow(!isShow)
+  // }
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    getAllElement('/elementos')
+  //   getAllElement('/elementos')
 
-  },[])
+  // },[])
 
 
   return (
-    <div>     
-
-      <header>
+    <div> 
+       <header>
         <img src="nextwell.png" alt="logo" />
-        <h1>Solicitud de Elementos</h1>
-        <p>RQ</p>
+        
       </header>
-      <section>
+      <NavBar/>   
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+      </Routes> 
+
+     
+      {/* <section>
+      
 
         <button onClick={handleClick}>Elementos   </button>
         {
@@ -62,7 +76,7 @@ function App() {
 
         
         
-      </section>
+      </section> */}
     </div>
   )
 }
