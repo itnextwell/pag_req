@@ -9,6 +9,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import NavBar from './components/shared/NavBar'
+import Solicitud from './pages/Solicitud'
+import ProtectedRoutes from './pages/ProtectedRoutes'
 
 
 
@@ -30,7 +32,7 @@ function App() {
 
   // },[])
 
-
+  const [isLogget, setIsLogget] = useState(false)
   return (
     <div> 
        <header>
@@ -40,8 +42,12 @@ function App() {
       <NavBar/>   
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/login' element={<Login setIsLogget={setIsLogget}/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route element={<ProtectedRoutes isLogget={isLogget} />}>
+          <Route path='/solicitud' element={<Solicitud/>}/>
+        </Route>
+
       </Routes> 
 
      
