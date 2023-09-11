@@ -1,22 +1,27 @@
+import { useEffect } from "react"
+import useAuth from "../hooks/useAuth"
 
 
 
 const Lists = ({element, deleteElemById,setUpdateInfo}) => {
+   
+    
+    const userL = JSON.parse(localStorage.getItem("user"));
+     
 
+  
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
-        
-
-    }
+      }
     
     const handleUpdate=()=>{
         setUpdateInfo(element)          
     }
-
+     
     return (
-        <article>
+        <article>           
 
-            <h2>Solicitud de elementos #{element.id}</h2>
+            <h3>Requerimeinto  #{element.id}</h3>
 
             <ul>
                 <li><span>Descripcion </span><span>{element.description}</span></li>
@@ -25,14 +30,14 @@ const Lists = ({element, deleteElemById,setUpdateInfo}) => {
                 <li><span>Prioridad </span><span>{element.priority}</span></li>
                 <li><span>Responsable </span><span>{element.responsible}</span></li>
                 <li><span>Proveedor </span><span>{element.supplier}</span></li>
+                
+
             </ul>
 
             <button onClick={handleDelete}><i className='bx bx-trash'></i></button>
             <button onClick={handleUpdate}><i className='bx bx-edit-alt'></i></button>
-
             
-            
-            
+            <div><span>Solicitado por: </span><span>{userL.name} {userL.lastName}</span></div>
         </article>
     )
 }

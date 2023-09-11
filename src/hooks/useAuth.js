@@ -1,7 +1,10 @@
 import axios from "axios"
+import getConfigAuth from "../utils/getConfigAuth"
+import { useState } from "react"
 
 
 const useAuth = () => {
+  
   //Register
   const createUser=(url,data)=>{
     axios.post(url,data)
@@ -11,7 +14,7 @@ const useAuth = () => {
     })
     .catch(err=>console.log(err))
   }
-
+  //login
   const loginUser=(url,data)=>{
     axios.post(url,data)
     .then(res=>{
@@ -22,6 +25,8 @@ const useAuth = () => {
     .catch(err=>console.log(err))
 
   }
+
+
 
   return {createUser,loginUser}
 }

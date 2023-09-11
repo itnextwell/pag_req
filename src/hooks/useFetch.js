@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import getConfigAuth from "../utils/getConfigAuth"
 
 const useFetch = (url) => {
   const [element, setElement] = useState()
@@ -9,7 +10,7 @@ const useFetch = (url) => {
   //Read
 
   const getAllElement=(path)=>{
-    axios.get(`${url}${path}`)
+    axios.get(`${url}${path}`,getConfigAuth())
 
     .then(res=>setElement(res.data))
 
@@ -19,7 +20,7 @@ const useFetch = (url) => {
   //Create
 
   const createNew=(path,data)=>{
-    axios.post(`${url}${path}`,data)
+    axios.post(`${url}${path}`,data,getConfigAuth())
     .then(res=>{
     setElement([...element,res.data])
     console.log(res.data)
@@ -30,7 +31,7 @@ const useFetch = (url) => {
   //Delete
 
   const deleteElement=(path,id)=>{
-    axios.delete(`${url}${path}/${id}`)
+    axios.delete(`${url}${path}/${id}`,getConfigAuth())
     .then(res=>{
         console.log(res.data)
         const filterElement=element.filter(elem=>elem.id!==id)
@@ -41,7 +42,7 @@ const useFetch = (url) => {
   
   //update el orden si importa de los compoenetes 
   const updateElement=(path,id,data)=>{
-    axios.put(`${url}${path}/${id}`,data)
+    axios.put(`${url}${path}/${id}`,data,getConfigAuth())
     .then(res=>{
         console.log(res.data)
         const infoUpdate=element.map(elem=>{
