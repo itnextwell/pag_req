@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch'
 import Lists from '../components/Lists'
 import Elements from '../components/Elements'
+import './styles/Solicitud.css'
 
 
 const Solicitud = () => {
@@ -21,11 +22,11 @@ const Solicitud = () => {
 
   },[])
   return (
-    <div>
-        <section>
-        <h1>Solicitud de Elementos</h1>
-        <p>RQ</p>
-        <button onClick={handleClick}>Elementos   </button>
+    <div className='div_solicitud'>
+        <section className='section_sol'>
+        <h1 className='title_solicitud'>Solicitud de Elementos</h1>
+        
+        <button className='button_solicitud' onClick={handleClick}>Elementos   </button>
         {
           isShow 
           ?<Elements createNew={createNew}

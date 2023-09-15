@@ -36,7 +36,7 @@ function App() {
   return (
     <div> 
        <header>
-        <img src="nextwell.png" alt="logo" />
+        <img className='logo_next' src="next.png" alt="logo" />
         
       </header>
       <NavBar/>   

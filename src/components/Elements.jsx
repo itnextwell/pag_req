@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import './styles/Elements.css'
 
 
 const Elements = ({ createNew,updateInfo,updateElment }) => {

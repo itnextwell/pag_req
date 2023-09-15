@@ -24,36 +24,40 @@ const Register = () => {
   
   return (
     <div>
-      <form  onSubmit={handleSubmit(sumit)}>
-      <div>
-        <label htmlFor="name">Nombre</label>
+      <form className="form_r" onSubmit={handleSubmit(sumit)}>
+      <div className="form_section">
+        <label className="form_label" htmlFor="name">Nombre</label>
         <input {...register('name')} id="name" type="text" />
       </div>
-      <div>
-        <label htmlFor="lastName">Apellido</label>
-        <input {...register('lastName')} id="lastName" type="text" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="lastName">Apellido</label>
+        <input  className="form_input" {...register('lastName')} id="lastName" type="text" />
       </div>
-      <div>
-        <label htmlFor="mail">Email</label>
-        <input {...register('mail')} id="mail" type="email" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="mail">Email</label>
+        <input className="form_input" {...register('mail')} id="mail" type="email" />
       </div>
-      <div>
-        <label htmlFor="phone">Celular</label>
-        <input {...register('phone')} id="phone" type="number" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="phone">Celular</label>
+        <input  className="form_input"{...register('phone')} id="phone" type="number" />
       </div>
-      <div>
-        <label htmlFor="post">Cargo</label>
-        <input {...register('post')} id="post" type="text" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="post">Cargo</label>
+        <input className="form_input" {...register('post')} id="post" type="text" />
       </div>
-      <div>
-        <label htmlFor="identification">Identificación</label>
-        <input {...register('identification')} id="identification" type="text" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="identification">Identificación</label>
+        <input className="form_input" {...register('identification')} id="identification" type="text" />
       </div>
-      <div>
-        <label htmlFor="password">Contraseña</label>
-        <input {...register('password')} id="password" type="text" />
+      <div className="form_section">
+        <label className="form_label" htmlFor="password">Contraseña</label>
+        <input className="form_input" {...register('password')} id="password" type="text" />
       </div>
-      <button>enviar</button>
+      <div className="form_section">
+        <label className="form_label" htmlFor="rol">Rol</label>
+        <input className="form_input" {...register('rol')} id="rol" type="text" />
+      </div>
+      <button className="form_btn">enviar</button>
       </form>
       
     </div>

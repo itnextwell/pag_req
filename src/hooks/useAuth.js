@@ -4,7 +4,7 @@ import { useState } from "react"
 
 
 const useAuth = () => {
-  
+  const [userIdA, setUserIdA] = useState()
   //Register
   const createUser=(url,data)=>{
     axios.post(url,data)
@@ -25,10 +25,21 @@ const useAuth = () => {
     .catch(err=>console.log(err))
 
   }
+// user
+const getUserId=(url,id)=>{
+  axios.get(`${url}/${id}`,getConfigAuth())
+
+  .then(res=>{
+    setUserIdA(res.data)
+    // console.log(res.data)
+  })
+
+  .catch(err=>console.log(err))
+
+}
 
 
-
-  return {createUser,loginUser}
+  return {userIdA,createUser,loginUser,getUserId}
 }
 
 export default useAuth
