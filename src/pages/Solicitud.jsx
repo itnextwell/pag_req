@@ -3,6 +3,7 @@ import useFetch from '../hooks/useFetch'
 import Lists from '../components/Lists'
 import Elements from '../components/Elements'
 import './styles/Solicitud.css'
+import Requests from '../components/Requests'
 
 
 const Solicitud = () => {
@@ -33,22 +34,27 @@ const Solicitud = () => {
           updateInfo={updateInfo}
           updateElment={updateElment}
           />
-          :  <h3>Solicitud</h3>
+          :  <h3 className='solitud_subtitle'>Solicitud</h3>
         }        
         
-        <div>
+        <div className='solicitud_list'>
           {
             elements?.map(element=>(
               <Lists
               element={element}
-              key={element.id}
-              deleteElemById={deleteElemById}
+              key={element.id}         
               
-              setUpdateInfo={setUpdateInfo}
-              />
+              />         
+              
             ))          
 
-          }         
+          } 
+          {
+            <Requests createNew={createNew}                    
+              
+            />
+          }
+                  
 
         </div>
 

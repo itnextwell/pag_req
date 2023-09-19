@@ -1,0 +1,52 @@
+
+.container_register{
+    width: 100vw; 
+}
+
+
+.form_r{
+    display: flex;
+    flex-direction: column;  
+    padding: 0 0 2em 2em; 
+      
+}
+.title_register{
+    color: var( --colorPrincipal);
+    padding: 2em;
+}
+.form_section{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-bottom: 1.2em;
+    width: 50%;
+    color: var(--color_leter);
+    
+}
+
+.form_label{
+   
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1em;
+   
+}
+
+.form_input{
+    border:1px solid #ccc;
+    font-size: 1.1em;
+    padding: 0.5em 1em; 
+
+}
+
+.form_btn{
+    display: block;
+    width: 30%;
+    font-size: 1.2rem;
+    padding:  0.5em 1em;
+    border-radius: 0.5em;
+    background-color: rgb(123 123 214);
+    color: white;
+    
+}

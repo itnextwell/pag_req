@@ -1,5 +1,9 @@
 
-
+.solitud_subtitle{
+    color: var(--color_leter);
+    font-weight: 900;
+    font-size: 1.2em;
+}
 .logo_next{
     width: 15%;
     margin-left: 1em;
@@ -10,13 +14,15 @@
 .nav_link{
     
     cursor: pointer;
+    
 }
 
 .nav_ul_link{
     
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: space-between;
+    
 }
 
 .nvbar{
@@ -24,6 +30,60 @@
     margin-left: 30em;
     margin-top: -3em;
     margin-bottom: 5em;
+    
+}
+
+.link{
+    color: var(--color_leter);
+}
+
+.link:hover{
+    color: var(--colorPrincipal);
+}
+.form_element{
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 2rem; */
+    margin: 0 0 4em 2em;
+   
+}
+
+.form_section_element{
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-bottom: 1.2em;
+    width: 80%;
+    color: var(--color_leter);
+    
+}
+
+.form_label_element{
+    /* color: black; */
+    /* background-color: white; */
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 1em;
+    /* color: white */
+}
+
+.form_input_element{
+    border:1px solid #ccc;
+    font-size: 1.1em;
+    padding: 0.5em 1em; 
+
+}
+
+.form_btn_element{
+    display: block;
+    width: 30%;
+    font-size: 1.2rem;
+    padding:  0.5em 1em;
+    border-radius: 0.5em;
+    background-color: rgb(123 123 214);
+    color: white;
+    
 }
 
 @media(max-width:800px){

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import useFetch from "../hooks/useFetch"
 import useAuth from "../hooks/useAuth"
+import './styles/Register.css'
 
 
 const Register = () => {
@@ -18,16 +19,18 @@ const Register = () => {
       phone:'',
       post:'',
       identification:'',
-      password:''
+      password:'',
+      rol:''
     })
   }
   
   return (
-    <div>
+    <div className="container_register">
+      <h3 className="title_register"> <span>Registro</span></h3>
       <form className="form_r" onSubmit={handleSubmit(sumit)}>
       <div className="form_section">
         <label className="form_label" htmlFor="name">Nombre</label>
-        <input {...register('name')} id="name" type="text" />
+        <input className="form_input" {...register('name')} id="name" type="text" />
       </div>
       <div className="form_section">
         <label className="form_label" htmlFor="lastName">Apellido</label>

@@ -35,34 +35,34 @@ const submit=(data)=>{
 
   return (
 
-      <form onSubmit={handleSubmit(submit)}>
+      <form className='form_element' onSubmit={handleSubmit(submit)}>
         
 
-      <div>
-        <label htmlFor="description">Descripción</label>
-        <input {...register('description')} id="description" type="text" />
+      <div className='form_section_element'>
+        <label className='form_label_element' htmlFor="description">Descripción</label>
+        <input className='form_input_element'  {...register('description')} id="description" type="text" />
       </div>
-      <div>
-        <label htmlFor="amount">Cantidad</label>
-        <input {...register('amount')} id="amount" type="number" />
+      <div className='form_section_element'>
+        <label className='form_label_element' htmlFor="amount">Cantidad</label>
+        <input className='form_input_element' {...register('amount')} id="amount" type="number" />
       </div>
-      <div>
-        <label htmlFor="justification">Justificación</label>
-        <input {...register('justification')} id="justification" type="text" />
+      <div className='form_section_element'>
+        <label className='form_label_element' htmlFor="justification">Justificación</label>
+        <input className='form_input_element' {...register('justification')} id="justification" type="text" />
       </div>
-      <div>
-        <label htmlFor="responsible">Responsable</label>
-        <input {...register('responsible')} id="responsible" type="text" />
+      <div className='form_section_element'> 
+        <label className='form_label_element' htmlFor="responsible">Responsable</label>
+        <input className='form_input_element' {...register('responsible')} id="responsible" type="text" />
       </div>
-      <div>
-        <label htmlFor="supplier">Proveedor</label>
-        <input {...register('supplier')} id="supplier" type="text" />
+      <div className='form_section_element'>
+        <label className='form_label_element' htmlFor="supplier">Proveedor</label>
+        <input className='form_input_element' {...register('supplier')} id="supplier" type="text" />
       </div>
-      <div>
-        <label htmlFor="priotiry">Prioridad</label>
-        <input {...register('priority')} id="priotiry" type="text" />
+      <div className='form_section_element'>
+        <label className='form_label_element' htmlFor="priotiry">Prioridad</label>
+        <input className='form_input_element' {...register('priority')} id="priotiry" type="text" />
       </div>
-      <button>Enviar </button>
+      <button className='form_btn_element'>Enviar </button>
       
 
     </form>

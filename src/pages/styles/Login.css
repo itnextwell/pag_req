@@ -1,7 +1,7 @@
 .container_login{
     width: 100%;
     min-height: 100vh;
-    /* position: fixed; */
+   
     background-color: #0004;
     top: 0;
     display: flex;

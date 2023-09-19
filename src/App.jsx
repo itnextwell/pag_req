@@ -34,7 +34,7 @@ function App() {
 
   const [isLogget, setIsLogget] = useState(false)
   return (
-    <div> 
+    <div className='container'> 
        <header>
         <img className='logo_next' src="next.png" alt="logo" />
         
@@ -43,9 +43,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login setIsLogget={setIsLogget}/>}/>
-        <Route path='/register' element={<Register/>}/>
         <Route element={<ProtectedRoutes isLogget={isLogget} />}>
           <Route path='/solicitud' element={<Solicitud/>}/>
+          <Route path='/register' element={<Register/>}/>
         </Route>
 
       </Routes> 

@@ -1,6 +1,8 @@
 :root{
     --colorPrincipal:rgb(51, 255, 190);
     --color_button:rgb(51, 152, 219);
+    --color_leter:rgb(244, 240, 240); 
+    --color_pag:rgb(255, 87, 51 );
 }
 
 *{
@@ -8,10 +10,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #120c1d ;
-    color: aliceblue;
+    /* background-color: #120c1d ; */
+    
 }
 
+.container{
+    background-color: #120c1d ;
+}
 ul {
     list-style: none;
 }
@@ -35,13 +40,14 @@ button{
     border: none;
     margin-top: 2em;
     cursor: pointer;
-    /* box-shadow: 1px 3px 11px -5px rgb(102,231,200, .79); */
+   
 }
 
     
 button:hover{
     box-shadow: none;
     background-color: rgb(132, 216, 216);
+    
 }
 input{
     background-color: aliceblue;
