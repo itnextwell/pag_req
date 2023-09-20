@@ -42,17 +42,20 @@ const Solicitud = () => {
             elements?.map(element=>(
               <Lists
               element={element}
-              key={element.id}         
+              key={element.id}
+              deleteElemById={deleteElemById}
               
-              />         
+              setUpdateInfo={setUpdateInfo}
               
-            ))          
+              />
+              
+              
+            ))  
+              
 
           } 
           {
-            <Requests createNew={createNew}                    
-              
-            />
+            <Requests/>  
           }
                   
 
