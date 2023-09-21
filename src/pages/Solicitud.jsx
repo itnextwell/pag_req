@@ -4,12 +4,16 @@ import Lists from '../components/Lists'
 import Elements from '../components/Elements'
 import './styles/Solicitud.css'
 import Requests from '../components/Requests'
+import ResquesData from '../components/ResquesData'
+
 
 
 const Solicitud = () => {
      const [updateInfo, setUpdateInfo] = useState()
 
   const url='http://localhost:8080/api/v1'
+    
+  const [request,getAllRequest,createNewReq, deleteReqId, updateRequest]=useFetch(url)
   const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
   const [isShow, setIsShow] = useState(false)
   
@@ -20,6 +24,7 @@ const Solicitud = () => {
   useEffect(()=>{
 
     getAllElement('/elementos')
+    getAllRequest('/requests')
 
   },[])
   return (
@@ -46,18 +51,21 @@ const Solicitud = () => {
               deleteElemById={deleteElemById}
               
               setUpdateInfo={setUpdateInfo}
-              
               />
-              
-              
-            ))  
-              
+            ))          
 
           } 
-          {
-            <Requests/>  
-          }
-                  
+           {
+            request?.map(reque=>(
+                <ResquesData 
+                    reque={reque}
+                    key={reque.id}
+                    getAllRequest={getAllRequest} />
+
+            ))
+        }
+
+          <Requests/>      
 
         </div>
 

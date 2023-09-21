@@ -1,17 +1,22 @@
 import { useEffect } from "react"
 import useAuth from "../hooks/useAuth"
 import './styles/Lists.css'
+import useFetch from "../hooks/useFetch"
+
 
 
 const Lists = ({element, deleteElemById,setUpdateInfo}) => {
    
     const url='http://localhost:8080/api/v1/users'
+    // const urlBase='http://localhost:8080/api/v1'
     // const userL = JSON.parse(localStorage.getItem("user"));
+    // const [request,getAllRequest,createNew, deleteReqId, updateRequest]=useFetch(urlBase)
 
      const{userIdA,getUserId}=useAuth()
     useEffect(()=>{
 
         getUserId(url,element?.userId)
+        // getAllRequest('/requests')
     
       },[])
 
@@ -23,7 +28,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo}) => {
     const handleUpdate=()=>{
         setUpdateInfo(element)          
     }
-    //  console.log(userIdA)
+     
     return (
         <article className="article_lists"> 
         <section className="article_section">
@@ -52,8 +57,8 @@ const Lists = ({element, deleteElemById,setUpdateInfo}) => {
 
             </div>
             
-            {/* <div><span>Solicitado por: </span><span>{userL.name} {userL.lastName}</span></div> */}
-        
+           
+                      
         
         </section>          
             
