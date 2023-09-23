@@ -67,7 +67,7 @@ const Solicitud = () => {
                       
 
           } 
-           {
+           {/* {
             request?.map(reque=>(
                 <ResquesData 
                     reque={reque}
@@ -79,7 +79,7 @@ const Solicitud = () => {
                     />
 
             ))
-        }
+        } */}
 
         
 

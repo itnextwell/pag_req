@@ -21,7 +21,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
     
       },[])
 
-  console.log(request)
+  console.log(element)
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
       }
@@ -29,7 +29,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
     const handleUpdate=()=>{
         setUpdateInfo(element)          
     }
-     
+     console.log(element.requests[0]?.isApproved)
     return (
         <article className="article_lists"> 
         <section className="article_section">
@@ -45,7 +45,8 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
                 <li className="article_li"><span className="arti_tile">Prioridad: </span><span className="arti_req">{element.priority}</span></li>
                 <li className="article_li"><span className="arti_tile">Responsable: </span><span className="arti_req">{element.responsible}</span></li>
                 <li className="article_li"><span className="arti_tile">Proveedor: </span><span className="arti_req">{element.supplier}</span></li>
-                
+                <li className="article_li"><span className="arti_tile">Solicitud: </span><span className="arti_req">{element.requests[0]?.isApproved === true && <p>Solicitud aprobada</p>}
+        {element.requests[0]?.isApproved === false && <p>Solicitud rechazada</p>}</span></li>
 
             </ul>
             <div  className="article_soli"><span>Solicitado por: </span><span>{userIdA?.name} {userIdA?.lastName}</span></div> 
