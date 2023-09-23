@@ -60,8 +60,11 @@ const Solicitud = () => {
               key={element.id}
               deleteElemById={deleteElemById}
               deleteReqId={deleteReqId}
-              
+              getAllElement={getAllElement}
               setUpdateInfo={setUpdateInfo}
+              getAllRequest={getAllRequest} 
+              state={state}
+              setState={setState}
               />
             ))
                       

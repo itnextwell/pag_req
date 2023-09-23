@@ -6,7 +6,7 @@ import ResquesData from "./ResquesData"
 
 
 
-const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
+const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request,getAllRequest,state,getAllElement}) => {
    
     const url='http://localhost:8080/api/v1/users'
     // const urlBase='http://localhost:8080/api/v1'
@@ -17,11 +17,12 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
     useEffect(()=>{
 
         getUserId(url,element?.userId)
-        // getAllRequest('/requests')
+        getAllRequest('/requests')
+        getAllElement('/elementos')
     
-      },[])
+      },[state])
 
-  console.log(element)
+//   console.log(element)
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
         deleteReqId('/requests',element.requests[0]?.id)
@@ -30,7 +31,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
     const handleUpdate=()=>{
         setUpdateInfo(element)          
     }
-     console.log(element.requests[0]?.id)
+    //  console.log(element.requests[0]?.id)
     return (
         <article className="article_lists"> 
         <section className="article_section">
@@ -46,8 +47,17 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
                 <li className="article_li"><span className="arti_tile">Prioridad: </span><span className="arti_req">{element.priority}</span></li>
                 <li className="article_li"><span className="arti_tile">Responsable: </span><span className="arti_req">{element.responsible}</span></li>
                 <li className="article_li"><span className="arti_tile">Proveedor: </span><span className="arti_req">{element.supplier}</span></li>
-                <li className="article_li"><span className="arti_tile">Solicitud: </span><span className="arti_req">{element.requests[0]?.isApproved === true && <p>Solicitud aprobada</p>}
-        {element.requests[0]?.isApproved === false && <p>Solicitud rechazada</p>}</span></li>
+                <li className="article_li"><span className="arti_tile">Solicitud: </span>
+                    <span className="arti_req">
+                        {element.requests?.length === 0 && <p>Pendiente</p>}
+                        {element.requests?.length > 0 && (
+                            <div>
+                                {element.requests[0].isApproved === true && <p>Aprobada</p>}
+                                {element.requests[0].isApproved === false && <p>Rechazada</p>}
+                            </div>
+                            )}
+                    </span>
+                    </li>
 
             </ul>
             <div  className="article_soli"><span>Solicitado por: </span><span>{userIdA?.name} {userIdA?.lastName}</span></div> 
