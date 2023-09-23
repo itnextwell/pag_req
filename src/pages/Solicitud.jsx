@@ -12,6 +12,7 @@ const Solicitud = () => {
      const [updateInfo, setUpdateInfo] = useState()
 
   const url='http://localhost:8080/api/v1'
+  const [state, setState] = useState(false)
     
   const [request,getAllRequest,createNewReq, deleteReqId, updateRequest]=useFetch(url)
   const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
@@ -40,19 +41,30 @@ const Solicitud = () => {
           updateElment={updateElment}
           />
           :  <h3 className='solitud_subtitle'>Solicitud</h3>
-        }        
+        }       
+
+        <div>
+        <Requests
+            state={state}
+            setState={setState}
+          />   
+          
+          </div> 
         
         <div className='solicitud_list'>
+        
           {
             elements?.map(element=>(
               <Lists
               element={element}
               key={element.id}
               deleteElemById={deleteElemById}
+              deleteReqId={deleteReqId}
               
               setUpdateInfo={setUpdateInfo}
               />
-            ))          
+            ))
+                      
 
           } 
            {
@@ -60,12 +72,18 @@ const Solicitud = () => {
                 <ResquesData 
                     reque={reque}
                     key={reque.id}
-                    getAllRequest={getAllRequest} />
+                    getAllRequest={getAllRequest} 
+                    state={state}
+                    setState={setState}
+                    
+                    />
 
             ))
         }
 
-          <Requests/>      
+        
+
+             
 
         </div>
 

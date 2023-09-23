@@ -2,10 +2,11 @@ import { useEffect } from "react"
 import useAuth from "../hooks/useAuth"
 import './styles/Lists.css'
 import useFetch from "../hooks/useFetch"
+import ResquesData from "./ResquesData"
 
 
 
-const Lists = ({element, deleteElemById,setUpdateInfo}) => {
+const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
    
     const url='http://localhost:8080/api/v1/users'
     // const urlBase='http://localhost:8080/api/v1'
@@ -20,7 +21,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo}) => {
     
       },[])
 
-  
+  console.log(request)
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
       }

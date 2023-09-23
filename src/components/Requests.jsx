@@ -4,10 +4,10 @@ import useFetch from "../hooks/useFetch"
 
 
 
-const Requests = () => {
+const Requests = ({state,setState}) => {
     const {register,handleSubmit,reset,getValues}=useForm()
     const url='http://localhost:8080/api/v1'
-    const [requests, setRequests] = useState(null)
+    const [requests, setRequests] = useState()
     const [request,getAllRequest,createNew, deleteReqId, updateRequest]=useFetch(url)
 
 
@@ -26,9 +26,17 @@ const Requests = () => {
             elementoId:getValues('elementoId')
             
         }
-        createNew('/requests',data)        
+        createNew('/requests',data)
+        setState(!state)  
+        
+        reset({
+            description:'',
+            elementoId:''
+        })
 
     }
+
+    
 
     
   return (

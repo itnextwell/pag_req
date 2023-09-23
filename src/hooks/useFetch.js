@@ -3,7 +3,7 @@ import { useState } from "react"
 import getConfigAuth from "../utils/getConfigAuth"
 
 const useFetch = (url) => {
-  const [element, setElement] = useState()
+  const [element, setElement] = useState([])
 
   
 
