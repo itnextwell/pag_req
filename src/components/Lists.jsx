@@ -24,12 +24,13 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request}) => {
   console.log(element)
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
+        deleteReqId('/requests',element.requests[0]?.id)
       }
     
     const handleUpdate=()=>{
         setUpdateInfo(element)          
     }
-     console.log(element.requests[0]?.isApproved)
+     console.log(element.requests[0]?.id)
     return (
         <article className="article_lists"> 
         <section className="article_section">
