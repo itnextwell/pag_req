@@ -10,7 +10,7 @@ const Login = ({setIsLogget}) => {
   
  
 
-  const {loginUser}=useAuth()
+  const {loginUser,error}=useAuth()
 
   const submit=data=>{
     const url='http://localhost:8080/api/v1/users/login'
@@ -50,6 +50,7 @@ const Login = ({setIsLogget}) => {
   }
   return (
     <div className={`container_login `}>
+       
       <form className='form_log' onSubmit={handleSubmit(submit)}>
       <div className='form_section_login'>
         <label  className='form_label_login' htmlFor="mail">Email</label>
@@ -58,10 +59,12 @@ const Login = ({setIsLogget}) => {
       <div className='form_section_login'>
         <label className='form_label_login' htmlFor="password">Contraseña</label>
         <input className='form_input_login' {...register('password')} id="password" type="text" />
-      </div>     
+      </div> 
+      {error && <p className="error-login">Incorrecto, 'Ingrese nuevamente las credenciales' </p>}    
       <button className='form_btn_login' onClick={handleLogin}>Login</button>
       <button className='form_btn_login' onClick={handleLogout}>Logout</button>
       </form>
+     
       
 
 

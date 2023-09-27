@@ -4,6 +4,7 @@ import getConfigAuth from "../utils/getConfigAuth"
 
 const useFetch = (url) => {
   const [element, setElement] = useState([])
+  const [error, setError] = useState()
 
   
 
@@ -23,9 +24,14 @@ const useFetch = (url) => {
     axios.post(`${url}${path}`,data,getConfigAuth())
     .then(res=>{
     setElement([...element,res.data])
+    setError()
     console.log(res.data)
     })
-    .catch(err=>console.log(err))
+    .catch(err=>{
+      console.log(err)
+      setError("Verifique Error")
+    
+    })
   }
 
   //Delete
@@ -58,7 +64,7 @@ const useFetch = (url) => {
   }
 
 
-  return[element,getAllElement,createNew, deleteElement,updateElement]
+  return[element,getAllElement,createNew, deleteElement,updateElement, error]
 }
 
 export default useFetch

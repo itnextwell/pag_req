@@ -56,3 +56,8 @@
     background-color: rgb(123 123 214);
     color: white;
 }
+
+.error-login{
+    color: var(#120c1d);
+    
+}

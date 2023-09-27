@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import useFetch from "../hooks/useFetch"
+import axios from "axios"
 
 
 
@@ -8,7 +9,9 @@ const Requests = ({state,setState}) => {
     const {register,handleSubmit,reset,getValues}=useForm()
     const url='http://localhost:8080/api/v1'
     const [requests, setRequests] = useState()
-    const [request,getAllRequest,createNew, deleteReqId, updateRequest]=useFetch(url)
+    const [request,getAllRequest,createNew, deleteReqId, updateRequest,error]=useFetch(url)
+
+    
 
 
     const handleApro=()=>{
@@ -20,6 +23,7 @@ const Requests = ({state,setState}) => {
 
    
     const sumit=()=>{
+        
         const data={
             description:getValues('description'),
             isApproved:requests,
@@ -52,9 +56,11 @@ const Requests = ({state,setState}) => {
                 <input className='form_input_element'  {...register('elementoId')} id="elementoId" type="number" />
             </div>
 
-            {/* {requests === true && <p>Solicitud aprobada</p>}
-             {requests === false && <p>Solicitud rechazada</p>} */}
+            
+             {error && <p className="error-message">Solicitud ya procesada </p>}
 
+
+            
             <button onClick={handleApro}>Aprobado</button>
             <button onClick={handleRech}>Rechazado</button>
 

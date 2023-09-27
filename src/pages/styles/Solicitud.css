@@ -28,3 +28,7 @@
 .requesData{
     color: var( --color_leter);
 }
+
+.error-message{
+    color: var(--color_leter);
+}
