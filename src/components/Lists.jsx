@@ -22,7 +22,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request,getAll
     
       },[state])
 
-//   console.log(element)
+  //console.log(element)
     const handleDelete=()=>{
         deleteElemById('/elementos',element.id)
         deleteReqId('/requests',element.requests[0]?.id)

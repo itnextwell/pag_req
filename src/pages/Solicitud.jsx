@@ -5,6 +5,7 @@ import Elements from '../components/Elements'
 import './styles/Solicitud.css'
 import Requests from '../components/Requests'
 import ResquesData from '../components/ResquesData'
+import useAuth from '../hooks/useAuth'
 
 
 
@@ -13,6 +14,8 @@ const Solicitud = () => {
 
   const url='http://localhost:8080/api/v1'
   const [state, setState] = useState(false)
+  //  const urlBase='http://localhost:8080/api/v1/users'
+  //  const{userIdA,getAllUser}=useAuth()
     
   const [request,getAllRequest,createNewReq, deleteReqId, updateRequest]=useFetch(url)
   const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(url)
@@ -26,8 +29,10 @@ const Solicitud = () => {
 
     getAllElement('/elementos')
     getAllRequest('/requests')
+    // getAllUser(urlBase)
 
   },[])
+   //console.log(userIdA)
   return (
     <div className='div_solicitud'>
         <section className='section_sol'>
@@ -36,10 +41,16 @@ const Solicitud = () => {
         <button className='button_solicitud' onClick={handleClick}>Elementos   </button>
         {
           isShow 
-          ?<Elements createNew={createNew}
+          
+          ? <Elements 
+          // userAll={userAll}
+          // key={userAll.id}
+          createNew={createNew}
           updateInfo={updateInfo}
           updateElment={updateElment}
-          />
+        />
+          
+          
           :  <h3 className='solitud_subtitle'>Solicitud</h3>
         }       
 

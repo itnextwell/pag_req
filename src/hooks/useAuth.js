@@ -48,9 +48,19 @@ const getUserId=(url,id)=>{
   .catch(err=>console.log(err))
 
 }
+//agregado 
+//all user 
+const getAllUser=(url,data)=>{
+  axios.get(url,getConfigAuth())
+  .then(res=>{
+  setUserIdA(res.data)
+  //console.log(res.data)
+  })
+  .catch(err=>console.log(err))
+}
 
 
-  return {userIdA,createUser,loginUser,getUserId,error}
+  return {userIdA,createUser,loginUser,getUserId,getAllUser,error}
 }
 
 export default useAuth

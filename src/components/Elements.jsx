@@ -1,15 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './styles/Elements.css'
+import useAuth from '../hooks/useAuth'
 
 
 const Elements = ({ createNew,updateInfo,updateElment }) => {
+ 
   const {register, handleSubmit, reset }=useForm()
+  const url='http://localhost:8080/api/v1/users'
+   const{userIdA,getAllUser}=useAuth()
+
+
+  
 
  useEffect(()=>{
   reset(updateInfo)
+  getAllUser(url)
+  
  },[updateInfo])
 
+ //console.log(userIdA)
 
 
 const submit=(data)=>{
@@ -52,7 +62,18 @@ const submit=(data)=>{
       </div>
       <div className='form_section_element'> 
         <label className='form_label_element' htmlFor="responsible">Responsable</label>
-        <input className='form_input_element' {...register('responsible')} id="responsible" type="text" />
+        {/* <input className='form_input_element' {...register('responsible')} id="responsible" type="text" /> */}
+        <select className='form_input_element' {...register('responsible')} id="responsible">
+          <option value="">Selecione un responsable</option>
+          {
+            userIdA?.map((userAll)=>(
+              <option key={userAll.id} value={`${userAll.name} ${userAll.lastName}`} >{userAll.name} {userAll.lastName}</option>
+
+            ))
+          }
+         
+          
+        </select>
       </div>
       <div className='form_section_element'>
         <label className='form_label_element' htmlFor="supplier">Proveedor</label>
