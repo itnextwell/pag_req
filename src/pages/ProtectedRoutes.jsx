@@ -8,7 +8,8 @@ const ProtectedRoutes = ({isLogget}) => {
     return <Outlet/>
   }else{
     //si no esta logged
-    return <Navigate to='/login'/>
+   return <Navigate to='/login'/>
+   
     
 
   }

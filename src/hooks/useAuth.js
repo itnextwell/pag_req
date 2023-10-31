@@ -1,11 +1,14 @@
 import axios from "axios"
 import getConfigAuth from "../utils/getConfigAuth"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 const useAuth = () => {
   const [userIdA, setUserIdA] = useState()
   const [error, setError] = useState()
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
 
   const timer = setTimeout(() => {
     setError(); // Oculta el mensaje de error después de 3 segundos (ajusta el tiempo según tus necesidades)
@@ -28,10 +31,15 @@ const useAuth = () => {
         localStorage.setItem("token",res.data.token)
         localStorage.setItem("user",JSON.stringify(res.data.user))
         setError()
+        setIsAuthenticated(true)
+        console.log("aca en login")
+        
         console.log(res.data)})
     .catch(err=>{
       console.log(err)
       setError("Verifique Error")
+      setIsAuthenticated(false)
+      console.log('ingrese al false')
     
     })
 
@@ -60,7 +68,7 @@ const getAllUser=(url,data)=>{
 }
 
 
-  return {userIdA,createUser,loginUser,getUserId,getAllUser,error}
+  return {userIdA,createUser,loginUser,getUserId,getAllUser,error,isAuthenticated}
 }
 
 export default useAuth

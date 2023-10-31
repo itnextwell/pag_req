@@ -39,7 +39,7 @@ function App() {
         <img className='logo_next' src="next.png" alt="logo" />
         
       </header>
-      <NavBar/>   
+      <NavBar setIsLogget={setIsLogget}/>   
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login setIsLogget={setIsLogget}/>}/>
