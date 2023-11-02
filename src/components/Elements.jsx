@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './styles/Elements.css'
 import useAuth from '../hooks/useAuth'
+import Handsontable from 'handsontable'
 
 
 const Elements = ({ createNew,updateInfo,updateElment }) => {
@@ -9,6 +10,7 @@ const Elements = ({ createNew,updateInfo,updateElment }) => {
   const {register, handleSubmit, reset }=useForm()
   const url='http://localhost:8080/api/v1/users'
    const{userIdA,getAllUser}=useAuth()
+
 
 
   
@@ -23,13 +25,15 @@ const Elements = ({ createNew,updateInfo,updateElment }) => {
 
 
 const submit=(data)=>{
+  console.log(data)
   if(updateInfo){
     //si tiene información update
     updateElment('/elementos',updateInfo.id,data)
-
+    
   }else{
     //create
     createNew('/elementos',data)
+    
   }
   
   reset({

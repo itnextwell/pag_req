@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import NavBar from './components/shared/NavBar'
 import Solicitud from './pages/Solicitud'
 import ProtectedRoutes from './pages/ProtectedRoutes'
+import Tabla from './pages/Tabla'
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route element={<ProtectedRoutes isLogget={isLogget} />}>
           <Route path='/solicitud' element={<Solicitud/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/tabla' element={<Tabla/>}/>
         </Route>
 
       </Routes> 

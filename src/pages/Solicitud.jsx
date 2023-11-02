@@ -6,6 +6,7 @@ import './styles/Solicitud.css'
 import Requests from '../components/Requests'
 import ResquesData from '../components/ResquesData'
 import useAuth from '../hooks/useAuth'
+import Tabla from './Tabla'
 
 
 
@@ -95,7 +96,11 @@ const Solicitud = () => {
             ))
         } */}
 
-        
+        <Tabla
+        createNew={createNew}
+        updateInfo={updateInfo}
+        updateElment={updateElment}
+        />
 
              
 
