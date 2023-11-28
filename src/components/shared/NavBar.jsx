@@ -21,6 +21,7 @@ const NavBar = ({setIsLogget}) => {
             <li className='nav_link'><Link className='link' to='/login'>Login</Link></li>
             <li className='nav_link'><Link className='link'  to='/login' onClick={logout}>Log out</Link></li>
             <li className='nav_link'><Link className='link'  to='/tabla'>tabla</Link></li>
+            <li className='nav_link'><Link className='link'  to='/tabla2'>tabla 2</Link></li>
         </ul>
         
     </nav>

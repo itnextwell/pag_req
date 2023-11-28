@@ -12,6 +12,7 @@ import NavBar from './components/shared/NavBar'
 import Solicitud from './pages/Solicitud'
 import ProtectedRoutes from './pages/ProtectedRoutes'
 import Tabla from './pages/Tabla'
+import Table2 from './pages/Table2'
 
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='/solicitud' element={<Solicitud/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/tabla' element={<Tabla/>}/>
+          <Route path='/tabla2' element={<Table2/>}/>
         </Route>
 
       </Routes> 

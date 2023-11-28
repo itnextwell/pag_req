@@ -3,6 +3,7 @@
     --color_button:rgb(51, 152, 219);
     --color_leter:rgb(244, 240, 240); 
     --color_pag:rgb(255, 87, 51 );
+    --color_table:#b5b5b5; 
 }
 
 *{
@@ -38,7 +39,7 @@ button{
     padding: 5px 5px;
     border-radius: 1rem;
     border: none;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     cursor: pointer;
    
 }

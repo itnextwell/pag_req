@@ -21,7 +21,7 @@ const Elements = ({ createNew,updateInfo,updateElment }) => {
   
  },[updateInfo])
 
- //console.log(userIdA)
+//console.log(userIdA)
 
 
 const submit=(data)=>{
@@ -87,6 +87,7 @@ const submit=(data)=>{
         <label className='form_label_element' htmlFor="priotiry">Prioridad</label>
         <input className='form_input_element' {...register('priority')} id="priotiry" type="text" />
       </div>
+      {/* <input type="submit" value="Enviar" /> */}
       <button className='form_btn_element'>Enviar </button>
       
 
@@ -94,4 +95,4 @@ const submit=(data)=>{
   )
 }
 
-export default Elements
+export default Elements     

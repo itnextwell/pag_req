@@ -32,7 +32,7 @@ const Requests = ({state,setState}) => {
         }
         createNew('/requests',data)
         setState(!state)  
-        
+        console.log('resquest acá',data)
         reset({
             description:'',
             elementoId:''

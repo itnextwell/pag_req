@@ -18,61 +18,58 @@ registerAllModules()
 registerLanguageDictionary(esMX)
 
 const Tabla = ({updateInfo}) => {
-    const urlb='http://localhost:8080/api/v1'
-    const [ elements,getAllElement,createNew, deleteElemById, updateElment]=useFetch(urlb)
-    const {register,control, handleSubmit, reset }=useForm()
-  const url='http://localhost:8080/api/v1/users'
-   const{userIdA,getAllUser}=useAuth()
-   const [data, setData] = useState([{}]);
-   const { fields, append, remove } = useFieldArray({
+
+  const urlb = 'http://localhost:8080/api/v1'
+  const [elements, getAllElement, createNew, deleteElemById, updateElment] = useFetch(urlb)
+  const { register, control, handleSubmit, reset } = useForm()
+  const url = 'http://localhost:8080/api/v1/users'
+  const { userIdA, getAllUser } = useAuth()
+  const [data, setData] = useState([{}]);
+  const { fields, append, remove } = useFieldArray({
     control,
     name: 'items', // Nombre del campo en el formulario
   });
 
+  useEffect(()=>{
+    reset(updateInfo)
+    getAllUser(url)
+    
+    
+   },[])
+  // console.log(userIdA)
 
-<Handsontable
-  data={data}
-  columns={[
-    { data: 'description', title: 'Descripción' },
-    { data: 'amount', title: 'Cantidad' },
-    { data: 'justification', title: 'Justificación' },
-    { data: 'responsible', title: 'Responsable' },
-    { data: 'supplier', title: 'Proveedor' },
-    { data: 'priority', title: 'Prioridad' },
-  ]}
-  // Configuración adicional de Handsontable, si es necesario
-/>
-  const formaData = data.reduce((result, item) => {
-    return {
-      description: item.description || result.description || '', // Puedes proporcionar un valor por defecto si es necesario
-      amount: item.amount || result.amount || '',
-      justification: item.justification || result.justification || '',
-      responsible: item.responsible || result.responsible || '',
-      supplier: item.supplier || result.supplier || '',
-      priority: item.priority || result.priority || '',
-    };
-  }, {});
   
-  
- 
- useEffect(()=>{
-  reset(updateInfo)
-  getAllUser(url)
-  
-  
- },[])
+
+
 
  const hotTableRef = React.createRef();
  //console.log(userIdA)
+
+ const formaData = data.reduce((result, item) => {
+  //console.log(item.responsible)
  
-const submit=(data)=>{
+  return {
+    description: item.description || result.description || '', // Puedes proporcionar un valor por defecto si es necesario
+    amount: item.amount || result.amount || '',
+    justification: item.justification || result.justification || '',
+    responsible: item.responsible || result.responsible || '',
+    supplier: item.supplier || result.supplier || '',
+    priority: item.priority || result.priority || '',
+  };
+  
+}, {});
+
+//console.log(data)
+const submit=async(data)=>{
+  console.log(formaData)
+  console.log(data)
   if(updateInfo){
     //si tiene información update
     updateElment('/elementos',updateInfo.id,formaData)
 
   }else{
     //create
-    console.log(formaData)
+  
     createNew('/elementos',formaData)
     
   }
@@ -81,6 +78,7 @@ const submit=(data)=>{
     items:[{}],
   })
 }
+
 
 
   return (
@@ -94,12 +92,33 @@ const submit=(data)=>{
         rowHeaders={true}
         //permite ordenar la informacion en orden alfabetico 
         columnSorting={true}  
-        contextMenu={["row_above", "row_below"]}     
+        // contextMenu={["row_above", "row_below"]}     
         >
          <HotColumn data="description" title='Descripción' /> 
          <HotColumn data="amount" title='Cantidad' type='numeric'/> 
          <HotColumn data="justification" title='Justificación' /> 
-         <HotColumn data="responsible" title='Responsable' /> 
+         <HotColumn data="responsible" title='Responsable' 
+         //trea los usuarios 
+         editor= 'autocomplete'
+         source={userIdA?.map((userAll) => `${userAll.name} ${userAll.lastName}`)}
+        
+
+        //  editor="select"
+        //  selectOptions={userIdA?.map((userAll) => ({
+        //   value: userAll.id,
+        //   label: `${userAll.name} ${userAll.lastName}`,
+        // }))}
+         
+         //editor='dropdown'       
+               
+          // source={userIdA?.map((userAll) => ({
+          //   value: userAll.id,
+          //   label: `${userAll.name} ${userAll.lastName}`,
+          // }))}
+        
+        
+         /> 
+         
          <HotColumn data="supplier" title='Proveedor' /> 
          <HotColumn data="priority" title='Prioridad' type='numeric'/>   
             
@@ -114,6 +133,9 @@ const submit=(data)=>{
 
     </form>
   )
-}
+};
+
+
+
 
 export default Tabla;

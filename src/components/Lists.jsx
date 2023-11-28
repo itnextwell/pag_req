@@ -11,7 +11,7 @@ const Lists = ({element, deleteElemById,setUpdateInfo,deleteReqId,request,getAll
     const url='http://localhost:8080/api/v1/users'
     // const urlBase='http://localhost:8080/api/v1'
     // const userL = JSON.parse(localStorage.getItem("user"));
-    // const [request,getAllRequest,createNew, deleteReqId, updateRequest]=useFetch(urlBase)
+    //const [request,getAllRequest,createNew, deleteReqId, updateRequest]=useFetch()
 
      const{userIdA,getUserId}=useAuth()
     useEffect(()=>{

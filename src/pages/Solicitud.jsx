@@ -7,6 +7,8 @@ import Requests from '../components/Requests'
 import ResquesData from '../components/ResquesData'
 import useAuth from '../hooks/useAuth'
 import Tabla from './Tabla'
+import Table2 from './Table2'
+import Lists2 from '../components/Lists2'
 
 
 
@@ -40,7 +42,7 @@ const Solicitud = () => {
         <h1 className='title_solicitud'>Solicitud de Elementos</h1>
         
         <button className='button_solicitud' onClick={handleClick}>Elementos   </button>
-        {
+        {/* {
           isShow 
           
           ? <Elements 
@@ -53,54 +55,71 @@ const Solicitud = () => {
           
           
           :  <h3 className='solitud_subtitle'>Solicitud</h3>
-        }       
-
+        }   */}
+        <Table2
+        createNew={createNew}
+        updateInfo={updateInfo}
+        updateElment={updateElment}
+        setUpdateInfo={setUpdateInfo}
+         state={state}
+        
+        />     
+        
+        
         <div>
-        <Requests
+          {/* requerimientos de pestaña Requests por si 
+          se quiere habilitar */}
+        {/* <Requests
             state={state}
             setState={setState}
           />   
-          
+           */}
           </div> 
-        
+          { elements?.map(element=>(
+            <Lists2
+            element={element}
+            key={element.id}
+            deleteElemById={deleteElemById} //->
+            deleteReqId={deleteReqId} //->
+            getAllElement={getAllElement} //->
+            setUpdateInfo={setUpdateInfo} //->
+            getAllRequest={getAllRequest} //->
+            state={state} //->  
+            setState={setState}
+            /> 
+
+           )) 
+               
+            
+           }    
         <div className='solicitud_list'>
         
-          {
+          {/* {
             elements?.map(element=>(
               <Lists
-              element={element}
+              element={element} //->
               key={element.id}
-              deleteElemById={deleteElemById}
-              deleteReqId={deleteReqId}
-              getAllElement={getAllElement}
-              setUpdateInfo={setUpdateInfo}
-              getAllRequest={getAllRequest} 
-              state={state}
+              deleteElemById={deleteElemById} //->
+              deleteReqId={deleteReqId} //->
+              getAllElement={getAllElement} //->
+              setUpdateInfo={setUpdateInfo} //->
+              getAllRequest={getAllRequest} //->
+              state={state} //->
               setState={setState}
               />
             ))
                       
 
-          } 
-           {/* {
-            request?.map(reque=>(
-                <ResquesData 
-                    reque={reque}
-                    key={reque.id}
-                    getAllRequest={getAllRequest} 
-                    state={state}
-                    setState={setState}
-                    
-                    />
+          }  */}
+         
 
-            ))
-        } */}
-
-        <Tabla
+        {/* <Tabla
         createNew={createNew}
         updateInfo={updateInfo}
         updateElment={updateElment}
-        />
+        /> */}
+
+        
 
              
 
